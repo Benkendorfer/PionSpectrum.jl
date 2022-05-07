@@ -1,11 +1,11 @@
 using LatticeQCD
 
 # - - parameters - - - - - - - - - - -
-mass = 0.1 # quark mass
+mass = 0.05 # quark mass
 
 # Physical setting
 system = Dict()
-system["L"] = (8, 8, 8, 16) # x, y, z, t
+system["L"] = (16, 16, 16, 32) # x, y, z, t
 system["NC"] = 3 # The number of colors. "Nc" should be larger than 1.
 system["β"] = 5.7 # coupling constant: 2Nc/g^2
 system["Nthermalization"] = 0 # burn-in time

@@ -1,9 +1,11 @@
 using LatticeQCD
 
 # - - parameters - - - - - - - - - - -
+mass = 0.1 # quark mass
+
 # Physical setting
 system = Dict()
-system["L"] = (16, 16, 16, 32) # x, y, z, t
+system["L"] = (8, 8, 8, 16) # x, y, z, t
 system["NC"] = 3 # The number of colors. "Nc" should be larger than 1.
 system["β"] = 5.7 # coupling constant: 2Nc/g^2
 system["Nthermalization"] = 0 # burn-in time
@@ -16,24 +18,23 @@ system["Nwing"] = 1
 # Physical setting(fermions)
 staggered = Dict()
 system["quench"] = true # if you put true, quenched approximation is used
-system["Dirac_operator"] = "Staggered" # You can use Wilson fermions.
+system["Dirac_operator"] = "Wilson" # You can use Wilson fermions.
 Wilson = Dict()
-Wilson["hop"] = 0.14
-staggered["Nf"] = 2 # The number of quarks. You can choose 1,2,3,4,5,6,7,8 for staggered quark.
-staggered["mass"] = 0.2 # quark mass
+Wilson["hop"] = 1 / (2 * (mass + 4))
+Wilson["r"] = 1
 system["BoundaryCondition"] = [1, 1, 1, -1] # the boundary condition for quark: x,y,z,t.
 
 # System Control # direcotry for measurements.
 measurement = Dict()
 system["log_dir"] = "./logs"
-system["logfile"] = "HMC_L04040404_beta5.7_Staggered_mass0.5_Nf2_m_0.2.txt"
+system["logfile"] = "wilson_m_" * string(mass) * ".txt"
 system["saveU_dir"] = ""
 system["saveU_format"] = nothing
 system["saveU_every"] = 10000
 system["verboselevel"] = 2
 system["randomseed"] = 111
 measurement["measurement_basedir"] = "./measurements"
-measurement["measurement_dir"] = "HMC_L04040404_beta5.7_Staggered_mass0.5_Nf2/m_0.2/"
+measurement["measurement_dir"] = "wilson/m_" * string(mass)
 
 # parameter for HMC
 md = Dict()
@@ -56,10 +57,12 @@ measurement["measurement_methods"] = Dict[
   Dict{Any,Any}("methodname" => "Pion_correlator",
   "measure_every" => 1,
   "fermiontype" => "Wilson",
+  "hop" => 1 / (2 * (mass + 4))
 )
 ]
 # - - - - - - - - - - - - - - - - - - -
-my_QCD_parameter = make_parameters(system, actions, md, cg, measurement, wilson=Wilson, staggered=staggered);
+my_QCD_parameter = make_parameters(system, actions, md, cg, measurement, wilson=Wilson, # staggered=staggered
+);
 
 @time x = run_LQCD(my_QCD_parameter);
 

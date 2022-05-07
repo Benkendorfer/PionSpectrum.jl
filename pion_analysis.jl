@@ -1,17 +1,27 @@
 using Plots
 
-lines = readlines("measurements/HMC_L04040404_beta5.7_Staggered_mass0.5_Nf2/Pion_correlator_small.txt")
+function read_last_line(filename::String)
+    lines = readlines(filename)
 
-last_run = last(lines)
+    last_run = last(lines)
 
-vals_str = split(strip(split(last_run, "#")[1]), " ")[2:end]
-vals = parse.(Float64, vals_str)
+    vals_str = split(strip(split(last_run, "#")[1]), " ")[2:end]
+    vals = parse.(Float64, vals_str)
 
-nt = 1:length(vals)
+    return vals
+end
 
-p = plot(nt, vals, yaxis=:log, labels=["m = 0.2"])
+vals_2 = read_last_line("measurements/wilson/m_0.2/Pion_correlator.txt")
+vals_1 = read_last_line("measurements/wilson/m_0.1/Pion_correlator.txt")
+
+nt = 1:length(vals_2)
+
+p = plot(nt, vals_2, yaxis=:log, label="m = 0.2")
+plot!(nt, vals_1, label="m = 0.1")
 xlabel!("nt")
 ylabel!("C(nt)")
 
-savefig(p, "plots/first_run.png")
-savefig(p, "plots/first_run.pdf")
+print("Saving plot...")
+
+savefig(p, "plots/mass_scan.png")
+savefig(p, "plots/mass_scan.pdf")

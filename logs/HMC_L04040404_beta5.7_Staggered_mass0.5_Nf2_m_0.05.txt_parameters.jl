@@ -21,7 +21,7 @@ system["BoundaryCondition"] = [1, 1, 1, -1]
 	
 # System Control
 system["log_dir"] = "./logs"
-system["logfile"] = "HMC_L04040404_beta5.7_Staggered_mass0.5_Nf2.txt"
+system["logfile"] = "HMC_L04040404_beta5.7_Staggered_mass0.5_Nf2_m_0.05.txt"
 system["saveU_dir"] = ""
 system["saveU_format"] = nothing
 system["saveU_every"] = 10000

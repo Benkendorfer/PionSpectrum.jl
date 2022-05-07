@@ -16,19 +16,19 @@ system["Dirac_operator"] = "Staggered"
 wilson["Clover_coefficient"] = 0
 wilson["hop"] = 0
 staggered["Nf"] = 2
-staggered["mass"] = 0.05
+staggered["mass"] = 0.2
 system["BoundaryCondition"] = [1, 1, 1, -1]
 	
 # System Control
 system["log_dir"] = "./logs"
-system["logfile"] = "HMC_L04040404_beta5.7_Staggered_mass0.5_Nf2.txt"
+system["logfile"] = "HMC_L04040404_beta5.7_Staggered_mass0.5_Nf2_m_0.2.txt"
 system["saveU_dir"] = ""
 system["saveU_format"] = nothing
 system["saveU_every"] = 10000
 system["verboselevel"] = 2
 system["randomseed"] = 111
 measurement["measurement_basedir"] = "./measurements"
-measurement["measurement_dir"] = "HMC_L04040404_beta5.7_Staggered_mass0.5_Nf2/m_0.05/"
+measurement["measurement_dir"] = "HMC_L04040404_beta5.7_Staggered_mass0.5_Nf2/m_0.2/"
 	
 # HMC related
 md["Δτ"] = 0.14285714285714285

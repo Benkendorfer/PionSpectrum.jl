@@ -7,7 +7,7 @@ system["L"] = (16, 16, 16, 32) # x, y, z, t
 system["NC"] = 3 # The number of colors. "Nc" should be larger than 1.
 system["β"] = 5.7 # coupling constant: 2Nc/g^2
 system["Nthermalization"] = 0 # burn-in time
-system["Nsteps"] = 5 # the number of trajectory (# of samples)
+system["Nsteps"] = 10 # the number of trajectory (# of samples)
 system["initial"] = "cold" # initial condition for HMC
 system["initialtrj"] = 1 # initial number of HMC.
 system["update_method"] = "HMC" # You can use Heatbath for quenched case.
@@ -26,14 +26,14 @@ system["BoundaryCondition"] = [1, 1, 1, -1] # the boundary condition for quark: 
 # System Control # direcotry for measurements.
 measurement = Dict()
 system["log_dir"] = "./logs"
-system["logfile"] = "HMC_L04040404_beta5.7_Staggered_mass0.5_Nf2.txt"
+system["logfile"] = "HMC_L04040404_beta5.7_Staggered_mass0.5_Nf2_m_0.2.txt"
 system["saveU_dir"] = ""
 system["saveU_format"] = nothing
 system["saveU_every"] = 10000
 system["verboselevel"] = 2
 system["randomseed"] = 111
 measurement["measurement_basedir"] = "./measurements"
-measurement["measurement_dir"] = "HMC_L04040404_beta5.7_Staggered_mass0.5_Nf2"
+measurement["measurement_dir"] = "HMC_L04040404_beta5.7_Staggered_mass0.5_Nf2/m_0.2/"
 
 # parameter for HMC
 md = Dict()

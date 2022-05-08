@@ -1,7 +1,7 @@
 using LatticeQCD
 
 # - - parameters - - - - - - - - - - -
-mass = 0.05 # quark mass
+mass = 0.1 # quark mass
 
 # Physical setting
 system = Dict()
@@ -9,7 +9,7 @@ system["L"] = (16, 16, 16, 32) # x, y, z, t
 system["NC"] = 3 # The number of colors. "Nc" should be larger than 1.
 system["β"] = 5.7 # coupling constant: 2Nc/g^2
 system["Nthermalization"] = 0 # burn-in time
-system["Nsteps"] = 10 # the number of trajectory (# of samples)
+system["Nsteps"] = 100 # the number of trajectory (# of samples)
 system["initial"] = "cold" # initial condition for HMC
 system["initialtrj"] = 1 # initial number of HMC.
 system["update_method"] = "HMC" # You can use Heatbath for quenched case.
@@ -34,7 +34,7 @@ system["saveU_every"] = 10000
 system["verboselevel"] = 2
 system["randomseed"] = 111
 measurement["measurement_basedir"] = "./measurements"
-measurement["measurement_dir"] = "wilson/m_" * string(mass)
+measurement["measurement_dir"] = "wilson/m_" * string(mass) * "_long"
 
 # parameter for HMC
 md = Dict()

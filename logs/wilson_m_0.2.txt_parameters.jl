@@ -4,7 +4,7 @@ system["L"] = (16, 16, 16, 32)
 system["β"] = 5.7
 system["NC"] = 3
 system["Nthermalization"] = 0
-system["Nsteps"] = 10
+system["Nsteps"] = 100
 system["initial"] = "cold"
 system["initialtrj"] = 1
 system["update_method"] = "HMC"
@@ -29,7 +29,7 @@ system["saveU_every"] = 10000
 system["verboselevel"] = 2
 system["randomseed"] = 111
 measurement["measurement_basedir"] = "./measurements"
-measurement["measurement_dir"] = "wilson/m_0.2"
+measurement["measurement_dir"] = "wilson/m_0.2_long"
 	
 # HMC related
 md["Δτ"] = 0.14285714285714285
